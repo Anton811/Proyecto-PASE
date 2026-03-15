@@ -34,7 +34,7 @@ document.querySelector("#main").innerHTML = `
 
         <!-- boton olvidaste la contraseña y link a registro-->
         <div class="d-flex justify-content-between">
-          <a href="pages/client/dashboard/" class="text-secondary text-decoration-none"
+          <a href="pages/client/dashboard/index.html" class="text-secondary text-decoration-none"
             >¿Olvidaste tu contraseña?</a
           >
           <a href="" class="text-danger text-decoration-none fw-bold"
