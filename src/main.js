@@ -1,45 +1,54 @@
 import "./style.css";
 
 document.querySelector("#main").innerHTML = `
-      <div class="container w-75 bg-light p-5 border rounded-3">
-        <h2 class="d-flex justify-content-center">Inicio de Sesión</h2>
-
-        <!-- Form Inicio de Sesion -->
-        <form class="form">
-          <label for="email" class="text-danger fw-bold my-1">Email</label>
-          <input
-            type="email"
-            name="email_usuario"
-            id="email_usuario"
-            class="form-control mb-2"
-          />
-          <label for="password" class="text-danger fw-bold my-1"
-            >Contraseña</label
-          >
-          <input
-            type="password"
-            name="password_usuario"
-            id="password_usuario"
-            class="form-control"
-          />
-
-          <div class="container div justify-content-center d-flex my-4">
-            <input
-              type="submit"
-              value="Iniciar Sesion "
-              class="d-flex btn btn-danger justify-content-center fw-bold"
-            />
+      <div
+        class="container d-flex justify-content-center align-items-center vh-100"
+      >
+        <div class="container bg-light m-5">
+          <div class="d-flex justify-content-center m-3">
+            <h2>Inicio de Sesión</h2>
           </div>
-        </form>
+          <form>
+            <div class="form-floating m-3">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Ingresar Correo"
+                class="form-control"
+              />
+              <label for="email" class="text-danger">Correo</label>
+            </div>
+            <div class="form-floating m-3">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Ingresar Contraseña"
+                class="form-control"
+              />
+              <label for="email" class="text-danger">Contraseña</label>
+            </div>
 
-        <!-- boton olvidaste la contraseña y link a registro-->
-        <div class="d-flex justify-content-between">
-          <a href="pages/client/dashboard/" class="text-secondary text-decoration-none"
-            >¿Olvidaste tu contraseña?</a
-          >
-          <a href="" class="text-danger text-decoration-none fw-bold"
-            >Registrarse</a
-          >
+            <div class="d-flex justify-content-center my-5">
+              <input
+                type="submit"
+                value="Iniciar Sesion"
+                class="btn btn-danger fw-bold"
+              />
+            </div>
+          </form>
+
+          <div class="d-flex justify-content-between m-3">
+            <a
+              href="/pages/client/dashboard/"
+              class="text-secondary text-decoration-none fw-bold"
+              >¿Olvidaste la Contraseña?</a
+            >
+            <a href="" class="text-danger text-decoration-none fw-bold"
+              >Registrarse</a
+            >
+          </div>
         </div>
       </div>
 `;
