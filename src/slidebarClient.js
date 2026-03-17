@@ -1,7 +1,8 @@
-document.querySelector("#nav").innerHTML = `
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#nav").innerHTML = `
     <div class="offcanvas-header mt-3">
         <img
-          src="/src/assets/PaseLogo.svg"
+          src="/PaseLogo.svg"
           style="width: 60px; height: 60px"
           viewBox="0 0 16 16"
           alt=""
@@ -17,7 +18,7 @@ document.querySelector("#nav").innerHTML = `
           <div class="d-flex justify-content-center">
             <a href="" class="text-decoration-none d-flex"
               ><img
-                src="/src/assets/Dashboard.svg"
+                src="/Dashboard.svg"
                 style="width: 30px; height: 30px"
                 viewBox="0 0 16 16"
               />
@@ -29,7 +30,7 @@ document.querySelector("#nav").innerHTML = `
           <div class="d-flex justify-content-center">
             <a href="" class="text-decoration-none d-flex"
               ><img
-                src="/src/assets/History.svg"
+                src="/History.svg"
                 style="width: 30px; height: 30px"
                 viewBox="0 0 16 16"
               />
@@ -41,7 +42,7 @@ document.querySelector("#nav").innerHTML = `
           <div class="d-flex justify-content-center">
             <a href="" class="text-decoration-none d-flex"
               ><img
-                src="/src/assets/Settings.svg"
+                src="/Settings.svg"
                 style="width: 30px; height: 30px"
                 viewBox="0 0 16 16"
               />
@@ -58,3 +59,4 @@ document.querySelector("#nav").innerHTML = `
         </div>
       </div>
 `;
+});
