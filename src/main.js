@@ -45,7 +45,7 @@ document.querySelector("#main").innerHTML = `
               class="text-secondary text-decoration-none fw-bold"
               >¿Olvidaste la Contraseña?</a
             >
-            <a href="" class="text-danger text-decoration-none fw-bold"
+            <a href="/pantcondres/" class="text-danger text-decoration-none fw-bold"
               >Registrarse</a
             >
           </div>

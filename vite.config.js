@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"), // Tu página principal
         dashboard: resolve(__dirname, "pages/client/dashboard/index.html"), // Tu página de dashboard
+        panreserv: resolve(__dirname, "pantcondres/index.html"),
         // Si tienes más páginas (reportes, admin), agrégalas aquí abajo
       },
     },
