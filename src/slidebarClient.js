@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="container-fluid my-5">
           <div class="d-flex justify-content-center">
-            <a href="" class="text-decoration-none d-flex"
+            <a href="/pages/client/reserva/confirmacion/" class="text-decoration-none d-flex"
               ><img
                 src="/History.svg"
                 style="width: 30px; height: 30px"

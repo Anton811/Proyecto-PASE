@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Confirmación</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <!-- Flecha -->
+      <div class="back" onclick="regresar()">
+        <i class="bi bi-arrow-left"></i>
+      </div>
+
+      <h4 class="title text-center mb-4">Confirmación de reserva</h4>
+
+      <!-- INFO -->
+      <div class="info-box">
+        <div class="row-info">
+          <span>Cajón seleccionado</span>
+          <span id="cajon">5</span>
+        </div>
+
+        <div class="row-info">
+          <span>Entrada</span>
+          <div>
+            <span id="fecha">Mar 01, 2026</span>
+            <span id="hora">2:00 pm</span>
+          </div>
+        </div>
+
+        <div class="row-info">
+          <span>Horas reservadas</span>
+          <span id="horas">4</span>
+        </div>
+
+        <div class="row-info total">
+          <span>Total a pagar</span>
+          <span id="total">$200</span>
+        </div>
+      </div>
+
+      <!-- PAGO -->
+      <h5 class="subtitle text-center mt-4">Método de pago</h5>
+
+      <div class="payment-box mt-3">
+        <input
+          type="text"
+          class="form-control mb-2"
+          placeholder="Número de tarjeta"
+          id="tarjeta"
+        />
+
+        <div class="row mt-2">
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="MM/YY"
+              id="fechaTarjeta"
+            />
+          </div>
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="CVV"
+              id="cvv"
+            />
+          </div>
+        </div>
+
+        <button class="btn-pagar mt-3" onclick="pagar()">Pagar</button>
+      </div>
+    </div>
+
+    <script>
+      function regresar() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
