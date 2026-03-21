@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="offcanvas-body px-0">
         <div class="container-fluid my-5">
           <div class="d-flex justify-content-center">
-            <a href="" class="text-decoration-none d-flex"
+            <a href="/pages/client/dashboard/" class="text-decoration-none d-flex"
               ><img
                 src="/Dashboard.svg"
                 style="width: 30px; height: 30px"
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="container-fluid my-5">
           <div class="d-flex justify-content-center">
-            <a href="/pages/client/reserva/confirmacion/" class="text-decoration-none d-flex"
+            <a href="/pages/client/historial/" class="text-decoration-none d-flex"
               ><img
                 src="/History.svg"
                 style="width: 30px; height: 30px"
@@ -52,9 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="container-fluid my-5">
           <div class="d-flex justify-content-center">
+            <a href="/" class="text-decoration-none d-flex">
             <button type="button" class="btn-danger btn fw-bold">
               Cerrar Sesion
             </button>
+            </a>
           </div>
         </div>
       </div>
