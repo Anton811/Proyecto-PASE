@@ -13,6 +13,10 @@ export default defineConfig({
           "pages/client/reserva/confirmacion/index.html",
         ),
         historial: resolve(__dirname, "pages/client/historial/index.html"),
+        configuracion: resolve(
+          __dirname,
+          "pages/client/configuracion/index.html",
+        ),
         // Si tienes más páginas (reportes, admin), agrégalas aquí abajo
       },
     },

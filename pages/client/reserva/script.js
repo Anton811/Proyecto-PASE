@@ -1,57 +1,21 @@
-/* HASTA TENER BACKEND
+const estacionamiento = document.getElementById("estacionamiento");
 
-Simula cajón seleccionado
-const cajonSeleccionado = localStorage.getItem("cajon") || "C1";
+const zona = ["A", "B", "C", "D"];
 
-document.getElementById("cajon").innerText = cajonSeleccionado;
+document.addEventListener("DOMContentLoaded", function () {
+  cargarCajones();
 
-// Simulachorarios ocupados
-const horariosOcupados = ["14:00", "16:00"];
+  lotes = document.querySelectorAll(".lote");
 
-//Valida horario
-document.getElementById("hora").addEventListener("change", function () {
-  const hora = this.value;
-  const mensaje = document.getElementById("mensaje");
-
-  if (horariosOcupados.includes(hora)) {
-    mensaje.innerText = "Horario reservado";
-  } else {
-    mensaje.innerText = "";
-  }
+  lotes.forEach((lote) => {
+    lote.addEventListener("click", function () {
+      eliminarSeleccionado();
+      this.classList.toggle("bg-warning"); //Cambia el color de divs seleccionados
+    });
+  });
 });
 
-//Confirmar reserva
-function confirmarReserva() {
-  const fecha = document.getElementById("fecha").value;
-  const hora = document.getElementById("hora").value;
-
-  if (!fecha || !hora) {
-    alert("Selecciona fecha y hora");
-    return;
-  }
-
-  if (horariosOcupados.includes(hora)) {
-    alert("Ese horario ya está reservado");
-    return;
-  }
-
-  //backend
-  console.log("Reservado:", cajonSeleccionado, fecha, hora);
-
-  //Redirigir
-  window.location.href = "confirmacion.html";
-}
-
-// Regresar
-function regresar() {
-  window.history.back();
-} 
-
-*/
-
-const estacionamiento = document.getElementById("estacionamiento");
-const zona = ["A", "B", "C", "D"];
-document.addEventListener("DOMContentLoaded", function () {
+function cargarCajones() {
   let cajon = "";
   let contador = 0;
   for (i = 0; i < 3; i++) {
@@ -64,12 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   estacionamiento.innerHTML = cajon;
+}
 
-  lotes = document.querySelectorAll(".lote");
+//Elimina la eleccion anterior
+function eliminarSeleccionado() {
+  let seleccionado = document.querySelector(".bg-warning");
 
-  lotes.forEach((lote) => {
-    lote.addEventListener("click", function () {
-      this.classList.toggle("bg-warning"); //Cambia el color de divs seleccionados
-    });
-  });
-});
+  if (!seleccionado) {
+    console.log("No se encontro un elemento seleccionado");
+    return;
+  } else {
+    seleccionado.classList.toggle("bg-warning");
+    return;
+  }
+}
