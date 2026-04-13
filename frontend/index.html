@@ -40,12 +40,12 @@
               <div class="d-flex justify-content-center m-3">
                 <h2>Inicio de Sesión</h2>
               </div>
-              <form>
+              <form id="formLogin">
                 <div class="form-floating m-3">
                   <input
                     type="email"
-                    name="email"
-                    id="email"
+                    name="passwordLogin"
+                    id="emailLogin"
                     placeholder="Ingresar Correo"
                     class="form-control"
                   />
@@ -54,8 +54,8 @@
                 <div class="form-floating m-3">
                   <input
                     type="password"
-                    name="password"
-                    id="password"
+                    name="passwordLogin"
+                    id="passwordLogin"
                     placeholder="Ingresar Contraseña"
                     class="form-control"
                   />
@@ -73,7 +73,7 @@
 
               <div class="d-flex justify-content-left m-3">
                 <a
-                  href="./pages/client/dashboard/"
+                  href="./pages/admin/dashboard/"
                   class="text-secondary text-decoration-none fw-bold"
                   >¿Olvidaste la Contraseña?</a
                 >
@@ -82,7 +82,7 @@
             <div class="tab-pane fade" id="register">
               <div>
                 <h1 class="d-flex justify-content-center m-3">Registrarse</h1>
-                <form>
+                <form id="formRegistro">
                   <div class="form-floating m-3">
                     <input
                       type="text"
@@ -95,41 +95,66 @@
                       >Nombre(s)</label
                     >
                   </div>
-                  <div class="form-floating m-3">
-                    <input
-                      type="text"
-                      name="appRegistro"
-                      id="appRegistro"
-                      class="form-control"
-                      placeholder="Ingrese Apellido Paterno"
-                    />
-                    <label for="appRegistro" class="text-danger"
-                      >Apellido Paterno</label
-                    >
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-floating m-3">
+                        <input
+                          type="text"
+                          name="appRegistro"
+                          id="appRegistro"
+                          class="form-control"
+                          placeholder="Ingrese Apellido Paterno"
+                        />
+                        <label for="appRegistro" class="text-danger"
+                          >Apellido Paterno</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-floating m-3">
+                        <input
+                          type="text"
+                          name="apmRegistro"
+                          id="apmRegistro"
+                          class="form-control"
+                          placeholder="Ingrese Apellido Materno"
+                        />
+                        <label for="apmRegistro" class="text-danger"
+                          >Apellido Materno (Opcional)</label
+                        >
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-floating m-3">
-                    <input
-                      type="text"
-                      name="apmRegistro"
-                      id="apmRegistro"
-                      class="form-control"
-                      placeholder="Ingrese Apellido Materno"
-                    />
-                    <label for="apmRegistro" class="text-danger"
-                      >Apellido Materno (Opcional)</label
-                    >
-                  </div>
-                  <div class="form-floating m-3">
-                    <input
-                      type="email"
-                      name="emailRegistro"
-                      id="emailRegistro"
-                      class="form-control"
-                      placeholder="Ingrese Correo"
-                    />
-                    <label for="emailRegistro" class="text-danger"
-                      >Correo Electronico</label
-                    >
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-floating m-3">
+                        <input
+                          type="email"
+                          name="emailRegistro"
+                          id="emailRegistro"
+                          class="form-control"
+                          placeholder="Ingrese Correo"
+                        />
+                        <label for="emailRegistro" class="text-danger"
+                          >Correo Electronico</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-floating m-3">
+                        <input
+                          type="tel"
+                          name="telefonoRegistro"
+                          id="telefonoRegistro"
+                          class="form-control"
+                          placeholder="Ingrese Telefono"
+                        />
+                        <label for="emailRegistro" class="text-danger"
+                          >Telefono</label
+                        >
+                      </div>
+                    </div>
                   </div>
                   <div class="form-floating m-3">
                     <input
