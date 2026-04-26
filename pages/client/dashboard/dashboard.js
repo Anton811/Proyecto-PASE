@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!token) {
     alert("Sesion no iniciada, Se redigira a la pagina de inicio");
-    window.location.href = "../";
+    window.location.href = "/";
   }
 
   try {
