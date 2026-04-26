@@ -50,8 +50,7 @@ login.addEventListener("submit", async (e) => {
   console.log(data.mensaje);
 
   if (data.token) {
-    // Guardamos el token en el navegador permanentemente
     localStorage.setItem("PASE-Token", data.token);
-    window.location.href = "/pages/client/dashboard/"; // Redirigir
+    window.location.href = "/pages/client/dashboard/";
   }
 });
