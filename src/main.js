@@ -24,7 +24,7 @@ registro.addEventListener("submit", async (e) => {
   };
 
   const response = await fetch(
-    "proyecto-pase-backend-production.up.railway.app/api/usuario/registro",
+    "https://proyecto-pase-backend-production.up.railway.app/api/usuario/registro",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ login.addEventListener("submit", async (e) => {
   };
 
   const result = await fetch(
-    "proyecto-pase-backend-production.up.railway.app/api/usuario/login",
+    "https://proyecto-pase-backend-production.up.railway.app/api/usuario/login",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
