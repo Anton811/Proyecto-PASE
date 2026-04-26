@@ -43,11 +43,14 @@ login.addEventListener("submit", async (e) => {
     password: document.getElementById("passwordLogin").value,
   };
 
-  const result = await fetch("http://localhost:3000/api/usuario/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(VerificarUsuario),
-  });
+  const result = await fetch(
+    "proyecto-pase-backend-production.up.railway.app/api/usuario/login",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(VerificarUsuario),
+    },
+  );
   const data = await result.json();
 
   console.log(data.mensaje);
