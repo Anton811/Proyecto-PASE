@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const respuesta = await fetch(
-      "http://localhost:3000/api/usuario/verificar-sesion",
+      "https://proyecto-pase-backend-production.up.railway.app/api/usuario/verificar-sesion",
       {
         method: "GET",
         headers: {
@@ -25,6 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Sesión verificada, bienvenido al Dashboard");
   } catch (error) {
     localStorage.removeItem("PASE-Token"); // Borramos el token basura
-    window.location.href = "/login.html";
+    window.location.href = "/";
   }
 });
