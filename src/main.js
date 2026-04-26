@@ -23,11 +23,14 @@ registro.addEventListener("submit", async (e) => {
     idTypeUsuario: "1",
   };
 
-  const response = await fetch("http://localhost:3000/api/usuario/registro", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(nuevoUsuario),
-  });
+  const response = await fetch(
+    "proyecto-pase-backend-production.up.railway.app/api/usuario/registro",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nuevoUsuario),
+    },
+  );
   const data = await response.json();
   alert(data.mensaje);
 });
