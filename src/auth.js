@@ -1,0 +1,29 @@
+export async function autenticador() {
+  const token = localStorage.getItem("PASE-Token");
+
+  if (!token) {
+    alert("Sesion no iniciada, Se redigira a la pagina de inicio");
+    window.location.href = "/";
+  }
+
+  try {
+    const respuesta = await fetch(
+      "https://proyecto-pase-backend-production.up.railway.app/api/usuario/verificar-sesion",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`, // Así le enviamos el token al servidor
+        },
+      },
+    );
+
+    if (!respuesta.ok) {
+      throw new Error("Token expirado o inválido");
+    }
+
+    console.log("Sesión verificada, bienvenido al Dashboard");
+  } catch (error) {
+    localStorage.removeItem("PASE-Token"); // Borramos el token basura
+    window.location.href = "/";
+  }
+}

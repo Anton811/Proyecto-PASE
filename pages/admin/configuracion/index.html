@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <title>Configuracion</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark" id="navAdmin"></nav>
+
+    <div class="row" style="min-height: 100vh">
+      <!-- Columna izquierda - Navegador -->
+      <div class="col-3 col-md-2 p-0">
+        <div class="d-flex flex-column h-100 bg-light shadow">
+          <ul class="nav flex-column p-2">
+            <li class="nav-item mb-1">
+              <a
+                data-bs-toggle="tab"
+                href="#tipoUsuario"
+                class="nav-link rounded active-nav shadow-sm py-3 text-dark active"
+                id="nav-tipo-usuario"
+              >
+                <h5>👤 Tipo de Usuario</h5>
+              </a>
+            </li>
+            <li class="nav-item mb-1">
+              <a
+                data-bs-toggle="tab"
+                href="#sucursal"
+                class="nav-link rounded shadow-sm py-3 text-dark"
+                id="nav-sucursales"
+              >
+                <h5>🏢 Sucursales</h5>
+              </a>
+            </li>
+            <li class="nav-item mb-1">
+              <a
+                data-bs-toggle="tab"
+                href="#automovil"
+                class="nav-link rounded shadow-sm py-3 text-dark"
+                id="nav-automovil"
+              >
+                <h5>🚗 Automóvil</h5>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna derecha - Contenido -->
+      <div class="col-9 col-md-10 p-4">
+        <div id="contenido" class="tab-content">
+          <!-- Panel Tipo de Usuario -->
+          <div class="tab-pane fade show active" id="tipoUsuario">
+            <h1>Tipos de Usuario</h1>
+            <div class="container">
+              <table class="table table-hover">
+                <thead>
+                  <th>hola</th>
+                  <th>mundo</th>
+                </thead>
+                <tbody id="tablaTipoCliente"></tbody>
+              </table>
+
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalTipoUsuario"
+              >
+                + Agregar nuevo tipo usuario
+              </button>
+            </div>
+          </div>
+          <!-- Panel Sucursal -->
+          <div class="tab-pane fade" id="sucursal">
+            <h1>Configuracion de sucursales</h1>
+            <!-- Tabla Sucursales -->
+            <div>
+              <h2>Sucursales</h2>
+              <table class="table table-hover">
+                <thead>
+                  <th>Sucursal</th>
+                  <th>Localizacion</th>
+                  <th></th>
+                </thead>
+                <tbody id="tablaSucursal"></tbody>
+              </table>
+
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalSucursal"
+              >
+                + Agregar Sucursal
+              </button>
+            </div>
+            <!-- Tabla Municipios -->
+            <div>
+              <h2>Municipios</h2>
+              <table class="table table-hover">
+                <thead>
+                  <th>Municipo</th>
+                  <th>Estado</th>
+                  <th></th>
+                </thead>
+                <tbody id="tablaMunicipo"></tbody>
+              </table>
+
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalMunicipio"
+              >
+                + Agregar Municipio
+              </button>
+            </div>
+            <!-- Tabla Estados -->
+            <div>
+              <h2>Entidad Federativa</h2>
+              <table class="table table-hover">
+                <thead>
+                  <th>Entdad</th>
+                  <th></th>
+                </thead>
+                <tbody id="tablaEstado"></tbody>
+              </table>
+
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalEstado"
+              >
+                + Agregar Entidad Federativa
+              </button>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="automovil">
+            <h1>Hola Mundo, este es el menu de "automovil"</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para agregar estados -->
+    <div class="modal fade" id="modalTipoUsuario">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Tipo de Usuario</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <form id="formAgregarTipoUsuario">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="nombreTipoUsuario">Nombre del tipo de usuario</label>
+              <input
+                type="text"
+                name="nombreTipoUsuario"
+                id="formAgregarTipoUsuarioNombre"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-success"
+                data-bs-dismiss="modal"
+              >
+                Confirmar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalEstado">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Estado</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <form id="formAgregarEstado">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formAgregarEstadoNombre">Nombre del Estado</label>
+              <input
+                type="text"
+                name="formAgregarEstadoNombre"
+                id="formAgregarEstadoNombre"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-success"
+                data-bs-dismiss="modal"
+              >
+                Confirmar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/src/slidebarAdmin.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

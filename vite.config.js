@@ -20,6 +20,10 @@ export default defineConfig({
         dashboardAdmin: resolve(__dirname, "pages/admin/dashboard/index.html"),
         reserva: resolve(__dirname, "pages/admin/reservas/index.html"),
         clientes: resolve(__dirname, "pages/admin/cliente/index.html"),
+        configuracionAdmin: resolve(
+          __dirname,
+          "pages/admin/configuracion/index.html",
+        ),
         // Si tienes más páginas (reportes, admin), agrégalas aquí abajo
       },
     },

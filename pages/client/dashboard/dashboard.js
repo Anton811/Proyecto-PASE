@@ -1,30 +1,28 @@
+import { autenticador } from "../../../src/auth";
+
+const token = localStorage.getItem("PASE-Token");
+const data = JSON.parse(atob(token.split(".")[1]));
+const backend = "https://proyecto-pase-backend-production.up.railway.app";
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const token = localStorage.getItem("PASE-Token");
-  console.log(token);
-
-  if (!token) {
-    alert("Sesion no iniciada, Se redigira a la pagina de inicio");
-    window.location.href = "/";
-  }
-
-  try {
-    const respuesta = await fetch(
-      "https://proyecto-pase-backend-production.up.railway.app/api/usuario/verificar-sesion",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`, // Así le enviamos el token al servidor
-        },
-      },
-    );
-
-    if (!respuesta.ok) {
-      throw new Error("Token expirado o inválido");
-    }
-
-    console.log("Sesión verificada, bienvenido al Dashboard");
-  } catch (error) {
-    localStorage.removeItem("PASE-Token"); // Borramos el token basura
-    window.location.href = "/";
-  }
+  autenticador;
+  const usuario = await DatosdeUsuario();
+  CargaDeDatos(usuario);
 });
+
+async function DatosdeUsuario() {
+  const res = await fetch(backend + `/api/usuario/${data.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const user = await res.json();
+
+  return user;
+}
+
+function CargaDeDatos(user) {
+  console.log(user);
+  document.getElementById("presentacion").innerHTML =
+    "Hola " + user.nombreUsuario.split(" ")[0] + "!";
+}

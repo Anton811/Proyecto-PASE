@@ -13,6 +13,9 @@ document.getElementById("navAdmin").innerHTML =
             <a class="nav-link" href="/pages/admin/cliente/"><h5 class="text-light">Clientes</h5></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/pages/admin/configuracion/"><h5 class="text-light">Configuracion</h5></a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href=""
               ><input
                 type="button"
