@@ -1,21 +1,6 @@
-.cajon-box{
-width: 120px;
-height: 200px;
-background-color: #8bc34a;
-margin: auto;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: bold;
+.zonas {
+  cursor: pointer;
 }
-
-.reserva-box{
-    background-color: #e9ecef;
-    border-radius: 10px;
-}
-
-.btn-azul{
-    background-color: #5187bc;
-    color: white;
-    border: none;
+.zonas:not(.bg-primary) {
+  cursor: not-allowed;
 }

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,11 +21,7 @@
       <div>
         <div class="d-flex justify-content-between">
           <div class="">
-            <button
-              class="btn"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#nav"
-            >
+            <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#nav">
               <img
                 src="/src/assets/MenuBar.svg"
                 style="width: 40px; height: 40px"
@@ -34,10 +31,7 @@
           </div>
           <div class="d-flex my-3 me-5">
             <a href="/pages/client/reserva/" class="text-decoration-none">
-              <button
-                class="btn btn-danger fw-bold shadow mx-auto d-flex"
-                id="nueva-reserva"
-              >
+              <button class="btn btn-danger fw-bold shadow mx-auto d-flex" id="nueva-reserva">
                 Regresar
               </button>
             </a>
@@ -47,7 +41,7 @@
 
       <div class="container"><h2>Detalles de la reserva</h2></div>
       <div class="container">
-        <form action="">
+        <form id="formReserva">
           <div>
             <h5>Ubicacion</h5>
             <!-- Apartado de ubicacion de sucursal -->
@@ -55,42 +49,35 @@
               <div class="row">
                 <div class="col-sm-6 my-2">
                   <div class="form-floating">
-                    <select name="estado" id="estado" class="form-select">
-                      <option value="">Seleccione una opcion...</option>
-                      <option value="Oaxaca">Oaxaca</option>
-                      <option value="Coahuila">Coahuila</option>
-                      <option value="Aguascalientes">Aguascalientes</option>
-                      <option value="Estado-de-Mexico">Estado de Mexico</option>
-                    </select>
-                    <label for="estado" class="text-danger">Estado</label>
+                    <select
+                      name="formReservaEstado"
+                      id="formReservaEstado"
+                      class="form-select"
+                      required
+                    ></select>
+                    <label for="formReservaEstado" class="text-danger">Estado</label>
                   </div>
                 </div>
                 <div class="col-sm-6 my-2">
                   <div class="form-floating">
                     <select
-                      name="municipio"
-                      id="municipio"
+                      name="formReservaMunicipio"
+                      id="formReservaMunicipio"
                       class="form-select"
-                    >
-                      <option value="">Seleccione una opcion...</option>
-                      <option value="Oaxaca">Oaxaca</option>
-                      <option value="Coahuila">Coahuila</option>
-                      <option value="Aguascalientes">Aguascalientes</option>
-                      <option value="Estado-de-Mexico">Estado de Mexico</option>
-                    </select>
-                    <label for="municipio" class="text-danger">Municipio</label>
+                      required
+                    ></select>
+                    <label for="formReservaMunicipio" class="text-danger">Municipio</label>
                   </div>
                 </div>
               </div>
               <div class="form-floating my-3">
-                <select name="sucursal" id="sucursal" class="form-select">
-                  <option value="">Seleccione una opcion...</option>
-                  <option value="Oaxaca">Oaxaca</option>
-                  <option value="Coahuila">Coahuila</option>
-                  <option value="Aguascalientes">Aguascalientes</option>
-                  <option value="Estado-de-Mexico">Estado de Mexico</option>
-                </select>
-                <label for="estado" class="text-danger">Sucursal</label>
+                <select
+                  name="formReservaSucursal"
+                  id="formReservaSucursal"
+                  class="form-select"
+                  required
+                ></select>
+                <label for="formReservaSucursal" class="text-danger">Sucursal</label>
               </div>
             </div>
           </div>
@@ -99,20 +86,49 @@
             <!-- Apartado para seleccionar horario de reseva -->
             <div class="row">
               <div class="col-sm-6 my-2">
-                <input
-                  type="time"
-                  name="horaEntrada"
-                  id="horaEntrada"
-                  class="form-control"
-                />
+                <select
+                  name="formReservaEntrada"
+                  id="formReservaEntrada"
+                  class="form-select"
+                  required
+                >
+                  <option value="">Selecciona una hora</option>
+                  <option value="06:00">6:00 AM</option>
+                  <option value="07:00">7:00 AM</option>
+                  <option value="08:00">8:00 AM</option>
+                  <option value="09:00">9:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                </select>
               </div>
               <div class="col-sm-6 my-2">
-                <input
-                  type="time"
-                  name="horaSalida"
-                  id="horaSalida"
-                  class="form-control"
-                />
+                <select
+                  name="formReservaSalida"
+                  id="formReservaSalida"
+                  class="form-select"
+                  required
+                >
+                  <option value="">Selecciona una hora</option>
+                  <option value="06:00">6:00 AM</option>
+                  <option value="07:00">7:00 AM</option>
+                  <option value="08:00">8:00 AM</option>
+                  <option value="09:00">9:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                </select>
               </div>
             </div>
           </div>
@@ -120,18 +136,81 @@
             <button type="submit" class="btn btn-danger m-2 shadow fw-bold">
               Nueva Busqueda
             </button>
-            <input type="reset" value="Limpiar Busqueda" class="btn btn-secondary m-2 shadow fw-bold">
+            <input
+              type="reset"
+              value="Limpiar Busqueda"
+              class="btn btn-secondary m-2 shadow fw-bold"
+            />
+          </div>
         </form>
       </div>
 
       <!-- Contenedor de estacionamiento seleccionable -->
       <div class="container">
-        <div id="estacionamiento" class="container"></div>
+        <div id="zona" class="w-100 px-3"></div>
+        <div id="containerBtnContinuar" class="d-flex justify-content-center"></div>
+      </div>
+    </div>
+
+    <!-- Modal de confirmacion de compra -->
+    <div class="modal fade" id="modalConfirmar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Confirmacion de Reserva</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="formConfirmarReserva">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formConfirmarReservaAuto" class="form-label"
+                >Seleccione auto a reservar 🚗</label
+              >
+              <select
+                name="formConfirmarReservaAuto"
+                id="formConfirmarReservaAuto"
+                class="form-select"
+                required
+              ></select>
+              <label for="formConfirmarReservaPago" class="form-label"
+                >Seleccione el metodo de pago 💳</label
+              >
+              <select
+                name="formConfirmarReservaPago"
+                id="formConfirmarReservaPago"
+                class="form-select"
+                required
+              ></select>
+              <div class="row">
+                <label for="formConfirmarReservaCVV" class="form-label">CVV</label>
+                <div class="col-3">
+                  <input
+                    type="text"
+                    name="formConfirmarReservaCVV"
+                    id="formConfirmarReservaCVV"
+                    required
+                    maxlength="3"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary fw-bold">Confirmar Reserva</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
     <script type="module" src="/src/slidebarClient.js"></script>
-    <script src="/pages/client/reserva/script.js"></script>
+    <script type="module" src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

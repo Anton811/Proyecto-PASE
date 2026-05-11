@@ -50,6 +50,16 @@
                 <h5>🚗 Automóvil</h5>
               </a>
             </li>
+            <li class="nav-item mb-1">
+              <a
+                data-bs-toggle="tab"
+                href="#estatus"
+                class="nav-link rounded shadow-sm py-3 text-dark"
+                id="nav-automovil"
+              >
+                <h5>✅ Estatus de Reserva</h5>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -88,7 +98,8 @@
                 <thead>
                   <th>Sucursal</th>
                   <th>Localizacion</th>
-                  <th></th>
+                  <th>Municipio</th>
+                  <th>Estado</th>
                 </thead>
                 <tbody id="tablaSucursal"></tbody>
               </table>
@@ -110,7 +121,7 @@
                   <th>Estado</th>
                   <th></th>
                 </thead>
-                <tbody id="tablaMunicipo"></tbody>
+                <tbody id="tablaMunicipio"></tbody>
               </table>
 
               <button
@@ -126,7 +137,7 @@
               <h2>Entidad Federativa</h2>
               <table class="table table-hover">
                 <thead>
-                  <th>Entdad</th>
+                  <th>Entidad</th>
                   <th></th>
                 </thead>
                 <tbody id="tablaEstado"></tbody>
@@ -141,25 +152,75 @@
               </button>
             </div>
           </div>
+          <!-- Panel automovil -->
           <div class="tab-pane fade" id="automovil">
-            <h1>Hola Mundo, este es el menu de "automovil"</h1>
+            <h1>Configuracion de Automoviles</h1>
+            <div>
+              <table class="table table-hover">
+                <thead>
+                  <th>Modelo</th>
+                  <th>Marca</th>
+                  <th></th>
+                </thead>
+                <tbody id="tablaModeloAuto"></tbody>
+              </table>
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalModelo"
+              >
+                + Agregar Modelo
+              </button>
+            </div>
+            <div>
+              <table class="table table-hover">
+                <thead>
+                  <th>Marca</th>
+                  <th></th>
+                </thead>
+                <tbody id="tablaMarcaAuto"></tbody>
+              </table>
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalMarca"
+              >
+                + Agregar Marca
+              </button>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="estatus">
+            <h1>Configuracion de Estatus de Reserva</h1>
+            <div>
+              <table class="table table-hover">
+                <thead>
+                  <th>Estatus</th>
+                  <th>Propiedad</th>
+                  <th></th>
+                </thead>
+                <tbody id="tablaEstatusReserva"></tbody>
+              </table>
+              <button
+                class="btn btn-success"
+                data-bs-toggle="modal"
+                data-bs-target="#modalEstatus"
+              >
+                + Agregar Nuevo Estatus
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modal para agregar estados -->
+    <!-- Modal para agregar Tipos de usuarios -->
     <div class="modal fade" id="modalTipoUsuario">
       <div class="modal-dialog">
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Nuevo Tipo de Usuario</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <form id="formAgregarTipoUsuario">
             <!-- Modal body -->
@@ -176,18 +237,10 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button
-                type="submit"
-                class="btn btn-success"
-                data-bs-dismiss="modal"
-              >
+              <button type="submit" class="btn btn-success" data-bs-dismiss="modal">
                 Confirmar
               </button>
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                 Close
               </button>
             </div>
@@ -195,17 +248,14 @@
         </div>
       </div>
     </div>
+    <!-- Modal para agregar Estados -->
     <div class="modal fade" id="modalEstado">
       <div class="modal-dialog">
         <div class="modal-content">
           <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Nuevo Estado</h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <form id="formAgregarEstado">
             <!-- Modal body -->
@@ -222,18 +272,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button
-                type="submit"
-                class="btn btn-success"
-                data-bs-dismiss="modal"
-              >
-                Confirmar
-              </button>
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
+              <button type="submit" class="btn btn-success">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                 Close
               </button>
             </div>
@@ -241,7 +281,243 @@
         </div>
       </div>
     </div>
+    <!-- Modal para agregar Municipios -->
+    <div class="modal fade" id="modalMunicipio">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Municipio</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="formAgregarMunicipio">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formAgregarMunicipioNombre">Nombre del municipio</label>
+              <input
+                type="text"
+                name="formAgregarMunicipioNombre"
+                id="formAgregarMunicipioNombre"
+                class="form-control"
+                required
+              />
+              <label for="formAgregarMunicipioEstado"
+                >Entidad Federativa a la que pertenece</label
+              >
+              <select
+                name="formAgregarMunicipioEstado"
+                id="formAgregarMunicipioEstado"
+                class="form-select"
+                required
+              ></select>
+            </div>
 
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal para agregar Sucursales -->
+    <div class="modal fade" id="modalSucursal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nueva Sucursal</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="formAgregarSucursal">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formAgregarSucursalNombre">Nombre de la Sucursal</label>
+              <input
+                type="text"
+                name="formAgregarSucursalNombre"
+                id="formAgregarSucursalNombre"
+                class="form-control"
+                required
+              />
+              <label for="formAgregarSucursalDireccion">Direccion de la sucursal</label>
+              <input
+                type="text"
+                name="formAgregarSucursalDireccion"
+                id="formAgregarSucursalDireccion"
+                class="form-control"
+                required
+              />
+              <label for="formAgregarSucursalEstado"
+                >Entidad Federativa a la que pertenece</label
+              >
+              <select
+                name="formAgregarSucursalEstado"
+                id="formAgregarSucursalEstado"
+                class="form-select"
+                required
+              ></select>
+              <label for="formAgregarSucursalMunicipio">Municipio al que pertenece</label>
+              <select
+                name="formAgregarSucursalMunicipio"
+                id="formAgregarSucursalMunicipio"
+                class="form-select"
+                required
+              ></select>
+              <label for="formAgregarSucursalPiso">Cantidad de Pisos</label>
+              <input
+                type="number"
+                name="formAgregarSucursalPiso"
+                id="formAgregarSucursalPiso"
+                class="form-control"
+                min="1"
+                max="3"
+                required
+              />
+              <label for="formAgregarSucursalZona">Cantidad de Zonas</label>
+              <input
+                type="number"
+                name="formAgregarSucursalZona"
+                id="formAgregarSucursalZona"
+                class="form-control"
+                min="1"
+                max="6"
+                required
+              />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal para agregar marcas -->
+    <div class="modal fade" id="modalMarca">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nueva Marca</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="formAgregarMarca">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formAgregarMarcaNombre">Nombre de la marca de autos</label>
+              <input
+                type="text"
+                name="formAgregarMarcaNombre"
+                id="formAgregarMarcaNombre"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal para agregar modelos -->
+    <div class="modal fade" id="modalModelo">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Modelo</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="formAgregarModelo">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formAgregarModeloNombre">Nombre del modelo del auto</label>
+              <input
+                type="text"
+                name="formAgregarModeloNombre"
+                id="formAgregarModeloNombre"
+                class="form-control"
+                required
+              />
+              <label for="formAgregarModeloMarca">Marca a la que pertenece</label>
+              <select
+                name="formAgregarModeloMarca"
+                id="formAgregarModeloMarca"
+                class="form-select"
+              ></select>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal para agregar nuevos estatus -->
+    <div class="modal fade" id="modalEstatus">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nuevo Estatus</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="formAgregarEstatus">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <label for="formAgregarEstatusNombre">Nombre del Estatus</label>
+              <input
+                type="text"
+                name="formAgregarEstatusNombre"
+                id="formAgregarEstatusNombre"
+                class="form-control"
+                required
+              />
+              <label for="formAgregarEstatusColor">Color del estatus</label>
+              <select
+                name="formAgregarEstatusColor"
+                id="formAgregarEstatusColor"
+                class="form-select"
+              >
+                <option value="text-bg-primary">Azul</option>
+                <option value="text-bg-success">Verde</option>
+                <option value="text-bg-info">Celeste</option>
+                <option value="text-bg-warning">Amarillo</option>
+                <option value="text-bg-danger">Rojo</option>
+                <option value="text-bg-secondary">Gris</option>
+              </select>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Confirmar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="/src/slidebarAdmin.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
