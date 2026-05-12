@@ -1,6 +1,6 @@
 import { autenticador } from "../../../src/auth";
 import QRCode from "qrcode";
-
+const hoy = Temporal.Now.plainDateISO().toString();
 const token = localStorage.getItem("PASE-Token");
 const data = JSON.parse(atob(token.split(".")[1]));
 const backend = import.meta.env.VITE_BACKEND;
@@ -18,7 +18,8 @@ document.getElementById("btnNuevaReserva").addEventListener("click", async (e) =
   const result = await fetch(`${backend}/api/reserva/reservaActiva/${data.id}`).then((r) =>
     r.json(),
   );
-
+  console.log(result.content);
+  alert("Hola");
   if (result.content) {
     alert(
       "Ya tienes una reserva activa. Debes completarla o cancelarla antes de hacer una nueva.",
@@ -48,10 +49,9 @@ function CargaDeDatos(user) {
 }
 
 async function cargarReservaActiva() {
-  const result = await fetch(`${backend}/api/reserva/reservaActiva/${data.id}`).then((r) =>
-    r.json(),
-  );
-
+  const result = await fetch(
+    `${backend}/api/reserva/reservaActiva/${data.id}?fecha=${hoy}`,
+  ).then((r) => r.json());
   const contenedor = document.getElementById("reservaActiva");
 
   if (!result.content) {
@@ -65,7 +65,6 @@ async function cargarReservaActiva() {
   contenedor.innerHTML = `
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title fw-bold">Reserva Activa</h5>
         <p class="mb-1"><strong>Sucursal:</strong> ${r.nombreSucursal}</p>
         <p class="mb-1"><strong>Zona:</strong> ${r.sectorZona}${r.numZona}</p>
         <p class="mb-1"><strong>Hora:</strong> ${r.horaInicio.slice(0, 5)} - ${r.horaFinal.slice(0, 5)}</p>
