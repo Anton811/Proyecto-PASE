@@ -213,7 +213,7 @@ function cargarHoras() {
     return;
   }
 
-  if (fecha.hour < 10) {
+  if (fecha.hour < 6) {
     alert("hora de reservas cerrada (10 a.m.), favor de realizar reserva el dia de mañana");
     window.location.href = "/pages/client/dashboard/";
     return;

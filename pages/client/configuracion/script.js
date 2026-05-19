@@ -39,6 +39,7 @@ document.getElementById("formAgregarAuto").addEventListener("submit", async (e) 
   }).then((e) => e.json());
 
   alert(result);
+  cargarAutos();
 });
 
 //Agregar Tarjetas
@@ -61,6 +62,27 @@ document.getElementById("formAgregarTarjeta").addEventListener("submit", async (
 
   alert(result);
   cargarTarjetas();
+});
+
+document.getElementById("formModificarUsuario").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const usuario = {
+    nombre: document.getElementById("formModificarUsuarioNombre").value,
+    app: document.getElementById("formModificarUsuarioApp").value,
+    apm: document.getElementById("formModificarUsuarioApm").value || "",
+    correo: document.getElementById("formModificarUsuarioCorreo").value,
+    telefono: document.getElementById("formModificarUsuarioTelefono").value,
+  };
+
+  const result = await fetch(`${backend}/api/usuario/modificarUsuario/${data.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "Application/json" },
+    body: JSON.stringify(usuario),
+  }).then((e) => e.json());
+
+  alert(result);
+  cargarDatosUsuario();
 });
 
 async function cargarDatosUsuario() {
@@ -91,12 +113,12 @@ async function cargarAutos() {
             <div class="col-10">
               <h5>${auto.nombreMarca} ${auto.nombreModelo}</h5>
               <div class="d-flex">
-                <div class="text-secondary">${auto.matricula} </div>
+                <div class="text-secondary">${auto.matricula}</div>
               </div>
               <div class="text-secondary">${auto.color}</div>
             </div>
             <div class="col-2 d-flex align-items-center justify-content-center">
-              <button class="btn">
+              <button class="btn btn-eliminar-auto" data-id="${auto.idAuto}">
                 <img src="/Delete.svg" style="width: 30px; height: 30px" />
               </button>
             </div>
@@ -105,6 +127,18 @@ async function cargarAutos() {
   });
 
   document.getElementById("vehiculo").innerHTML = m;
+
+  // 👈 Agrega eventos después de insertar el HTML
+  document.querySelectorAll(".btn-eliminar-auto").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!confirm("¿Seguro que deseas eliminar este vehículo?")) return;
+      const result = await fetch(`${backend}/api/auto/eliminarAuto/${btn.dataset.id}`, {
+        method: "DELETE",
+      }).then((e) => e.json());
+      alert(result.message);
+      cargarAutos();
+    });
+  });
 }
 async function cargarInfoAutos() {
   const marcas = (await fetch(`${backend}/api/auto/marca/cargarMarcas`).then((e) => e.json()))
@@ -133,7 +167,6 @@ async function cargarTarjetas() {
   let m = "";
 
   tarjetas.forEach((tarjeta) => {
-    console.log(tarjeta.numeroTarjeta.slice(12));
     m += `<div class="border shadow-sm border rounded-3 my-2 p-3">
           <div class="row">
             <div class="col-2 d-flex align-items-center justify-content-center">
@@ -144,7 +177,7 @@ async function cargarTarjetas() {
               <div class="text-secondary">Expira ${tarjeta.pagoMes}/${tarjeta.pagoAnio}</div>
             </div>
             <div class="col-2 d-flex align-items-center justify-content-center">
-              <button class="btn">
+              <button class="btn btn-eliminar-tarjeta" data-id="${tarjeta.idPago}">
                 <img src="/Delete.svg" style="width: 30px; height: 30px" />
               </button>
             </div>
@@ -153,4 +186,16 @@ async function cargarTarjetas() {
   });
 
   document.getElementById("tarjeta").innerHTML = m;
+
+  // 👈 Agrega eventos después de insertar el HTML
+  document.querySelectorAll(".btn-eliminar-tarjeta").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!confirm("¿Seguro que deseas eliminar esta tarjeta?")) return;
+      const result = await fetch(`${backend}/api/pago/eliminarTarjeta/${btn.dataset.id}`, {
+        method: "DELETE",
+      }).then((e) => e.json());
+      alert(result.message);
+      cargarTarjetas();
+    });
+  });
 }

@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#nav").innerHTML = `
     <div class="offcanvas-header mt-3">
         <img
-          src="/PaseLogo.svg"
-          style="width: 60px; height: 60px"
-          viewBox="0 0 16 16"
+          src="/icon-192.png"
           alt=""
+          class="my-auto rounded mx-3"
+          style="width: 60px; height: 60px"
         />
-        <h1 class="offcanvas-title">Menu</h1>
+        <h1 class="offcanvas-title" class="mx-3">Menu</h1>
         <button
           class="btn-close text-reset"
           data-bs-dismiss="offcanvas"

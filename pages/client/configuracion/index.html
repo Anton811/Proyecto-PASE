@@ -83,7 +83,7 @@
               />
             </div>
             <div class="mt-4 d-flex">
-              <button class="btn btn-primary d-flex">Modificar</button>
+              <button id="btn-modificar" class="btn btn-primary d-flex">Modificar</button>
             </div>
           </form>
         </div>
@@ -224,7 +224,7 @@
                 id="formAgregarTarjetaMes"
                 class="form-control"
               />
-              <label for="formAgregarTarjetaAnio" class="form-label">Mes de Vencimiento</label>
+              <label for="formAgregarTarjetaAnio" class="form-label">Año de Vencimiento</label>
               <input
                 type="text"
                 name="formAgregarTarjetaAnio"
@@ -242,11 +242,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-              <input
-                type="submit"
-                value="+ Agregar vehiculo"
-                class="btn btn-success fw-bold"
-              />
+              <input type="submit" value="+ Agregar Tarjeta" class="btn btn-success fw-bold" />
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                 Close
               </button>
