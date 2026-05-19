@@ -1,7 +1,14 @@
 const backend = import.meta.env.VITE_BACKEND;
 const token = localStorage.getItem("PASE-Token");
 const data = JSON.parse(atob(token.split(".")[1]));
-var municipiosCargados, sucursalesCargadas, horaEntrada, horaSalida, sucursal, duracion;
+var municipiosCargados,
+  sucursalesCargadas,
+  horaEntrada,
+  horaSalida,
+  sucursalCosto,
+  duracion,
+  horas,
+  tiempo;
 
 const hoy = new Date();
 
@@ -57,8 +64,8 @@ document.getElementById("formReservaMunicipio").addEventListener("change", async
 document.getElementById("formReservaSucursal").addEventListener("change", (e) => {
   const id = document.getElementById("formReservaSucursal").value;
   let data = sucursalesCargadas.filter((e) => e.idSucursal == id);
-  sucursal = data.costoHora;
-  console.log(sucursal);
+  sucursalCosto = data[0].costoHora;
+  console.log(sucursalCosto);
 });
 
 //Carga cajones de estacionamiento
@@ -77,7 +84,10 @@ document.getElementById("formReserva").addEventListener("submit", async (e) => {
   const result = await fetch(`${backend}/api/sucursal/cargarSucursal/${sucursal}`);
   const zonas = await result.json();
   duracion = calcularDuracion(horaEntrada, horaSalida);
+  console.log("duracion:" + duracion);
   console.log(zonas.message);
+  document.getElementById("costo").innerText =
+    `El costo total sera de $${tiempo * sucursalCosto}`;
   cargarZonas(zonas.content[0]);
 });
 
@@ -247,9 +257,10 @@ function cargarHoras() {
 function calcularDuracion(horaInicio, horaFinal) {
   const [h1, m1] = horaInicio.split(":").map(Number);
   const [h2, m2] = horaFinal.split(":").map(Number);
+  tiempo = h1;
 
   const totalMinutos = h2 * 60 + m2 - (h1 * 60 + m1);
-  const horas = Math.floor(totalMinutos / 60);
+  horas = Math.floor(totalMinutos / 60);
   const minutos = totalMinutos % 60;
 
   if (minutos === 0) return `${horas}h`;
