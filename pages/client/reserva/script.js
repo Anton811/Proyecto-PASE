@@ -1,7 +1,17 @@
 const backend = import.meta.env.VITE_BACKEND;
 const token = localStorage.getItem("PASE-Token");
 const data = JSON.parse(atob(token.split(".")[1]));
-var municipiosCargados, sucursalesCargadas, horaEntrada, horaSalida;
+var municipiosCargados, sucursalesCargadas, horaEntrada, horaSalida, sucursal, duracion;
+
+const hoy = new Date();
+
+const anio = hoy.getFullYear();
+// Sumamos 1 al mes porque van de 0 a 11, y convertimos a texto para usar padStart
+const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+const dia = String(hoy.getDate()).padStart(2, "0");
+
+const fechaFormateada = `${anio}-${mes}-${dia}`;
+console.log(fechaFormateada); // Resultado: "2026-05-19" (o la fecha de hoy)
 const colores = document.addEventListener("DOMContentLoaded", async () => {
   await cargarEstados();
   await cargarMunicipios();
@@ -44,6 +54,12 @@ document.getElementById("formReservaMunicipio").addEventListener("change", async
   });
   document.getElementById("formReservaSucursal").innerHTML = op;
 });
+document.getElementById("formReservaSucursal").addEventListener("change", (e) => {
+  const id = document.getElementById("formReservaSucursal").value;
+  let data = sucursalesCargadas.filter((e) => e.idSucursal == id);
+  sucursal = data.costoHora;
+  console.log(sucursal);
+});
 
 //Carga cajones de estacionamiento
 document.getElementById("formReserva").addEventListener("submit", async (e) => {
@@ -60,7 +76,7 @@ document.getElementById("formReserva").addEventListener("submit", async (e) => {
   }
   const result = await fetch(`${backend}/api/sucursal/cargarSucursal/${sucursal}`);
   const zonas = await result.json();
-
+  duracion = calcularDuracion(horaEntrada, horaSalida);
   console.log(zonas.message);
   cargarZonas(zonas.content[0]);
 });
@@ -116,7 +132,7 @@ async function cargarZonas(sucursal) {
   ).content;
   const reservas = (
     await fetch(
-      `${backend}/api/reserva/sucursal/cargarReservas?id=${sucursal.idSucursal}&horaEntrada=${horaEntrada}&horaSalida=${horaSalida}`,
+      `${backend}/api/reserva/sucursal/cargarReservas?id=${sucursal.idSucursal}&horaEntrada=${horaEntrada}&horaSalida=${horaSalida}&fechaReserva=${fechaFormateada}`,
     ).then((res) => res.json())
   ).content;
   let container = "";
@@ -226,4 +242,17 @@ function cargarHoras() {
   }
   document.getElementById("formReservaEntrada").innerHTML = inicio;
   document.getElementById("formReservaSalida").innerHTML = fin;
+}
+
+function calcularDuracion(horaInicio, horaFinal) {
+  const [h1, m1] = horaInicio.split(":").map(Number);
+  const [h2, m2] = horaFinal.split(":").map(Number);
+
+  const totalMinutos = h2 * 60 + m2 - (h1 * 60 + m1);
+  const horas = Math.floor(totalMinutos / 60);
+  const minutos = totalMinutos % 60;
+
+  if (minutos === 0) return `${horas}h`;
+  if (horas === 0) return `${minutos}m`;
+  return `${horas}h ${minutos}m`;
 }
