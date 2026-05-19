@@ -8,6 +8,7 @@ const colores = document.addEventListener("DOMContentLoaded", async () => {
   await cargarSucursales();
   await cargarAutos();
   await cargarTarjetas();
+  cargarHoras();
 });
 
 // carga Municipios dependiendo del Estado
@@ -201,4 +202,28 @@ async function cargarTarjetas() {
     op += `<option value="${tarjeta.idPago}">•••• ${tarjeta.numeroTarjeta.slice(12)}</option>`;
   });
   document.getElementById("formConfirmarReservaPago").innerHTML = op;
+}
+
+function cargarHoras() {
+  const fecha = Temporal.Now.plainDateTimeISO();
+  console.log(fecha.hour);
+  if (fecha.hour >= 20) {
+    alert("hora de reservas cerrada (8 p.m.), favor de realizar reserva el dia de mañana");
+    window.location.href = "/pages/client/dashboard/";
+    return;
+  }
+
+  if (fecha.hour < 10) {
+    alert("hora de reservas cerrada (10 a.m.), favor de realizar reserva el dia de mañana");
+    window.location.href = "/pages/client/dashboard/";
+    return;
+  }
+  let inicio = '<option value="">Selecciona una hora</option>',
+    fin = '<option value="">Selecciona una hora</option>';
+  for (let i = fecha.hour + 1; i < 21; i++) {
+    inicio += `<option value="${i}:00">${i}:00</option>`;
+    fin += `<option value="${i + 1}:00">${i + 1}:00</option>`;
+  }
+  document.getElementById("formReservaEntrada").innerHTML = inicio;
+  document.getElementById("formReservaSalida").innerHTML = fin;
 }

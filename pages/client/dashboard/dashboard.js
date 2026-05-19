@@ -1,5 +1,6 @@
 import { autenticador } from "../../../src/auth";
 import QRCode from "qrcode";
+var reservaHoy;
 const hoy = Temporal.Now.plainDateISO().toString();
 const token = localStorage.getItem("PASE-Token");
 const data = JSON.parse(atob(token.split(".")[1]));
@@ -15,12 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.getElementById("btnNuevaReserva").addEventListener("click", async (e) => {
   e.preventDefault();
 
-  const result = await fetch(`${backend}/api/reserva/reservaActiva/${data.id}`).then((r) =>
-    r.json(),
-  );
-  console.log(result.content);
-  alert("Hola");
-  if (result.content) {
+  if (reservaHoy) {
     alert(
       "Ya tienes una reserva activa. Debes completarla o cancelarla antes de hacer una nueva.",
     );
@@ -52,6 +48,7 @@ async function cargarReservaActiva() {
   const result = await fetch(
     `${backend}/api/reserva/reservaActiva/${data.id}?fecha=${hoy}`,
   ).then((r) => r.json());
+  reservaHoy = result.content;
   const contenedor = document.getElementById("reservaActiva");
 
   if (!result.content) {

@@ -78,6 +78,7 @@ document.getElementById("formAgregarSucursal").addEventListener("submit", async 
     municipio: document.getElementById("formAgregarSucursalMunicipio").value,
     piso: document.getElementById("formAgregarSucursalPiso").value,
     numZona: document.getElementById("formAgregarSucursalZona").value,
+    costo: document.getElementById("formAgregarSucursalZona").value,
   };
 
   const data = await fetch(`${backend}/api/sucursal/agregarSucursal`, {
